@@ -4,8 +4,8 @@ from typing import List
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from .schemas import ProjectMetadata
-from .contentloader import list_projects, get_project
+from schemas import ProjectMetadata
+from contentloader import list_projects, get_project
 
 app = FastAPI(title="Portfolio API")
 

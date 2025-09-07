@@ -19,7 +19,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci || npm install
 COPY . .
 
-RUN npm build && cp public/index.html dist/index.html
+RUN npm run build && cp public/index.html dist/index.html
 
 # production stage
 FROM nginx:alpine AS prod

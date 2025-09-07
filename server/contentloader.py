@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 from fastapi import HTTPException
-from .schemas import ProjectMetadata, ImageMetadata
+from schemas import ProjectMetadata, ImageMetadata
 
 CONTENT_DIR = Path(os.getenv("CONTENT_DIR", "content"))
 PROJECTS_DIR = CONTENT_DIR / "projects"
