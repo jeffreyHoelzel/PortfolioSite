@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchProjects } from "../api";
-import { type ProjectMetadata } from "../types";
+import { fetchProjects } from "../utils/api";
+import { type ProjectMetadata } from "../utils/types";
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<ProjectMetadata[]>([]);
