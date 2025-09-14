@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../styles/Home.css";
 
 type Action = {
   label: string;
@@ -24,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatar, actions = [] }) => {
                   : <div className="brandPhoto" aria-hidden="true" />
                 }
               </div>
-              <a href="/"><span>{name}</span></a>
+              <span className="brandName">{name}</span>
             </a>
 
             {actions.length > 0 && (

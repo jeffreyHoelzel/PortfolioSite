@@ -1,0 +1,80 @@
+.pageTitle {
+  margin: 0 0 16px 0;
+  font-size: clamp(28px, 4.8vw, 42px);
+  letter-spacing: 0.3px;
+}
+
+/* two projects cards at most */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--s3), 3.5vw, var(--s5));
+}
+
+/* card */
+.projectCard {
+  background: linear-gradient(180deg, #151822, #0f1118);
+  border: 1px solid color-mix(in oklab, var(--ink) 12% transparent);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  transition: transform 0.12s ease border-color 0.12s ease;
+}
+.projectCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* media */
+.thumbWrap {
+  display: block;
+}
+.projectThumb {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
+  background: #0c0e14;
+}
+.projectThumb.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+/* text */
+.projectMetadata {
+  padding: clamp(var(--s3), 2.8vw, var(--s4));
+  display: grid;
+  gap: 6px;
+}
+.projectTitle {
+  margin: 0;
+  font-size: clamp(18px, 2.6vw, 22px);
+}
+.projectTitle a {
+  text-decoration: none;
+}
+.projectTitle a:hover {
+  text-decoration: underline;
+}
+
+.projectDesc {
+  margin: 0;
+  color: #c3cad5;
+  line-height: 1.5;
+}
+
+/* responsive functionality */
+@media (max-width: 640px) {
+  .projectsGrid, .projectCard {
+    grid-template-columns: 1fr;
+  }
+  .projectThumb {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+}

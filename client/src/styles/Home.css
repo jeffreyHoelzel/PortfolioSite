@@ -82,6 +82,10 @@ img {
   display: block;
   border-radius: 50%;
 }
+.brandName{
+  font-size: clamp(14px, 3.5vw, 18px);
+  line-height: 1.1;
+}
 .navLinks {
   display: flex;
   align-items: center;
@@ -220,5 +224,13 @@ img {
 @media (prefers-reduced-motion: reduce) {
   * {
     transform: none !important;
+  }
+}
+@media (max-width: 420px) {
+  .brand {
+    letter-spacing: 0.5px;
+  }
+  .navLinks, .navLink {
+    padding: 8px 10px;
   }
 }

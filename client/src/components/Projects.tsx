@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchProjects } from "../utils/api";
 import { type ProjectMetadata } from "../utils/types";
+import "../styles/Projects.css"
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<ProjectMetadata[]>([]);
@@ -16,32 +18,40 @@ const Projects: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!projects) return <p>No content availble...</p>;
+  if (loading) return <main className="sectionPad"><div className="wrap"><p>Loading projects...</p></div></main>;
+  if (error) return <main className="sectionPad"><div className="wrap"><p>Error: {error}</p></div></main>;
 
   return (
-    <section>
-      <h2>Projects</h2>
-      <ul>
-        {projects.map((proj) => (
-          <li key={proj.slug} style={{ marginBottom: "16px" }}>
-            <h3>{proj.name}</h3>
-            <p>{proj.description}</p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {proj.images.map((img, i) => (
-                <img 
-                  key={i}
-                  src={img.url.startsWith("/") ? img.url : `/${img.url}`}
-                  alt={img.alt ?? proj.name}
-                  style={{ maxWidth: "280px", height: "auto", borderRadius: "8px" }}
-                />
-              ))}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <main>
+      <section className="sectionPad">
+        <div className="wrap">
+          <h1 className="pageTitle">Projects</h1>
+
+          <div className="projectsGrid">
+            {projects.map((p) => {
+              const thumb = p.images?.[0]?.url ?? "";
+              const alt = p.images?.[0]?.alt ?? `${p.name} thumbnail`;
+
+              return (
+                <article className="projectCard" key={p.slug}>
+                  <Link to={`/projects/${p.slug}`} className="thumbWrap" aria-label={p.name}>
+                    {thumb
+                      ? <img className="projectThumb" src={thumb} alt={alt} loading="lazy" />
+                      : <div className="projectThumb placeholder" aria-hidden="true" />  
+                    }
+                  </Link>
+                  
+                  <div className="projectMetadata">
+                    <h2 className="projectTitle"><Link to={`/projects/${p.slug}`}>{p.name}</Link></h2>
+                    {p.description && <p className="projectDesc">{p.description}</p>}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 
