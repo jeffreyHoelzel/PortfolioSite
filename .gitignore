@@ -3,4 +3,5 @@ __pycache__
 .env
 venv
 client/public/*.js
+client/public/*.css
 client/dist/

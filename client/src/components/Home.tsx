@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { fetchHomepage } from "../utils/api";
 import { type HomeMetadata } from "../utils/types";
+import "../styles/Home.css"
 
 const Home: React.FC = () => {
   const [content, setContent] = useState<HomeMetadata | null>(null);

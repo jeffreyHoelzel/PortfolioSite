@@ -1,0 +1,214 @@
+/* variables */
+:root {
+  --bg: #0b0c10;
+  --panel: #0f1118;
+  --ink: #e8ecf1;
+  --muted: #9aa3af;
+  --accent: #64c3ff;
+
+  --maxw: 1120px;
+  --r: 14px;
+
+  --s1: 6px;
+  --s2: 10px;
+  --s3: 16px;
+  --s4: 24px;
+  --s5: 36px;
+}
+
+/* base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* wrappers */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s3), 4vw, var(--s4));
+}
+.sectionPad {
+  padding-block: clamp(var(--s4), 6vw, var(--s5));
+}
+
+/* header */
+.siteHeader {
+  position: sticky;
+  background: rgba(11, 12, 16, 0.78);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+}
+.navRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.brandLogo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.navLink {
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--muted);
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.navLink:hover {
+  color: var(--ink);
+  background-color: color-mix(in oklab, var(--ink) 6%, transparent);
+}
+
+/* hero grid */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(var(--s3), 4.5vw, var(--s5));
+  align-items: center;
+}
+.kicker {
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(14px, 1.8vw, 16px);
+}
+.title {
+  margin: 0;
+  font-size: clamp(38px, 6.2vw, 64px);
+  line-height: 1.04;
+}
+.subtitle {
+  margin: 8px 0 0 0;
+  color: #c3cad5;
+  font-size: clamp(16px, 2.2vw, 20px);
+}
+.location {
+  margin-top: 6px;
+  color: var(--muted);
+}
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #151822, #0f1118);
+  border: 1px solid color-mix(in oklab, var(--ink), 14%, transparent);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+/* avatar card & socials */
+.avatarCard {
+  display: grid;
+  gap: var(--s3);
+  background: linear-gradient(180deg, #151822, #0e1017);
+  border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+  border-radius: var(--r);
+  padding: clamp(var(--s3), 3.5vw, var(--s4));
+}
+.avatarImg {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 330px;
+  justify-self: center;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+  background: #0c0e14;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.iconBtn {
+  font-size: 46px;
+  display: grid;
+  place-items: center;
+}
+.iconBtn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* about block */
+.about {
+  background: linear-gradient(0deg, #0f1219, #0b0c10);
+  border-top: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+}
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(var(--s3), 5vw, var(--s5));
+}
+.aboutTitle {
+  margin: 0 0 10px 0;
+  font-size: clamp(24px, 3vw, 32px);
+}
+.prose {
+  color: #c3cad5;
+  max-width: 72ch;
+}
+
+/* footer */
+.footer {
+  padding-block: var(--s4);
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+}
+
+/* responsive functionality */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transform: none !important;
+  }
+}
