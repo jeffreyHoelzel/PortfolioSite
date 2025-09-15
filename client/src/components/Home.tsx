@@ -4,12 +4,15 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { fetchHomepage } from "../utils/api";
 import { type HomeMetadata } from "../utils/types";
 import { copyToClipboard } from "../utils/copy";
+import Toast from "./Toast";
 import "../styles/Home.css"
 
 const Home: React.FC = () => {
   const [content, setContent] = useState<HomeMetadata | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const [contactCopiedMsg, setContactCopiedMsg] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(false);
@@ -34,6 +37,13 @@ const Home: React.FC = () => {
     socials = [], 
     actions = []
   } = content;
+
+  const handleContactCopy = async (e: React.MouseEvent<HTMLButtonElement>, text: string): Promise<void> => {
+    e.preventDefault();
+    if (!text) return;
+    const ok = await copyToClipboard(text);
+    if (ok) setContactCopiedMsg("Email copied to clipboard");
+  } 
 
   const iconFor = (raw?: string) => {
     const key = (raw || "").toLowerCase();
@@ -66,11 +76,18 @@ const Home: React.FC = () => {
               : <div className="avatarImg" aria-hidden="true" />
             }
             <div className="socials" aria-label="Social links">
-              {socials.map((soc, i) => (
-                <a key={`${soc.url}-${i}`} className="iconBtn" href={soc.url} target="_blank" aria-label={soc.label}>
+              {socials.map((soc, i) => {
+                const isEmail = soc.icon?.toLowerCase() === "email";
+                return isEmail ? (
+                <button key={`${soc.url}-${i}`} type="button" className="iconBtn" aria-label={soc.label ?? "Copy email"} onClick={(e) => handleContactCopy(e, soc.url ?? "")}>
                   {iconFor(soc.icon) ?? soc.label}
-                </a>
-              ))}
+                </button>
+                ) : (
+                  <a key={`${soc.url}-${i}`} className="iconBtn" href={soc.url} target="_blank" aria-label={soc.label}>
+                    {iconFor(soc.icon) ?? soc.label}
+                  </a>
+                );
+              })}
             </div>
           </aside>
         </div>
@@ -84,6 +101,8 @@ const Home: React.FC = () => {
           </div>
         </section>
       )}
+
+      <Toast message={contactCopiedMsg} duration={1500} onClose={() => setContactCopiedMsg(null)} />
     </main>
   );
 }
