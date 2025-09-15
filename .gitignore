@@ -5,3 +5,4 @@ venv
 client/public/*.js
 client/public/*.css
 client/dist/
+server/content/
