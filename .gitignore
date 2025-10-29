@@ -4,5 +4,7 @@ __pycache__
 venv
 client/public/*.js
 client/public/*.css
+client/public/*.map
+client/.npm-cache
 client/dist/
 server/content/

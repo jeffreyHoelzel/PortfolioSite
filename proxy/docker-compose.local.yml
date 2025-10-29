@@ -1,0 +1,14 @@
+services:
+  proxy:
+    image: nginx:alpine
+    container_name: proxy-local
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - portfolio_shared_net
+
+networks:
+  portfolio_shared_net:
+    external: true

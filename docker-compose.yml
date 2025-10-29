@@ -1,53 +1,41 @@
 services:
-  server:
+  backend:
     container_name: server
     build:
       context: ./server
-      target: dev
-    expose:
-      - "5000"
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    volumes:
-      - ./server:/app
     environment:
-      CORS_ORIGINS: http://localhost:8080,http://127.0.0.1:8080
+      - PYTHONUNBUFFERED=1
+      - UVICORN_HOST=0.0.0.0
+      - UVICORN_PORT=5000
+    volumes:
+      - ./server:/main
     networks:
-      - portfolio_net
+      - portfolio_shared_net
 
-  client:
+  frontend:
     container_name: client
     build:
       context: ./client
-      target: dev
-    expose:
-      - "3000"
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - REACT_APP_BACKEND_URL=http://backend:5000
+      - NODE_OPTIONS=--openssl-legacy-provider
     volumes:
       - ./client:/app
       - /app/node_modules
-    stdin_open: true
-    tty: true
-    depends_on:
-      - server
+      - ./client/src/styles:/app/src/styles
     networks:
-      - portfolio_net
-
-  proxy:
-    container_name: proxy
-    image: nginx:1.29.1-alpine
-    depends_on:
-      - client
-      - server
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    networks:
-      - portfolio_net
+      - portfolio_shared_net
 
 networks:
-  portfolio_net:
+  portfolio_shared_net:
     external: true
-    driver: bridge

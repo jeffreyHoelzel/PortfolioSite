@@ -2,8 +2,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k \"esbuild src/main.tsx --bundle --format=esm --sourcemap --outfile=public/app.js --loader:.ts=ts --loader:.tsx=tsx --watch\" \"live-server public --host=0.0.0.0 --port=3000 --no-css-inject\"",
-    "build": "esbuild src/main.tsx --bundle --format=esm --minify --sourcemap --outdir=dist --loader:.ts=ts --loader:.tsx=tsx",
+    "start": "concurrently -k \"esbuild src/main.tsx --bundle --format=esm --sourcemap --outfile=public/app.js --loader:.ts=ts --loader:.tsx=tsx --watch\" \"live-server public --host=0.0.0.0 --port=3000 --no-css-inject\"",
+    "build": "rm -rf dist && mkdir -p dist && esbuild src/main.tsx --bundle --format=esm --minify --sourcemap --outfile=dist/app.js --loader:.ts=ts --loader:.tsx=tsx && cp -r public/* dist/",
     "preview": "npx serve dist"
   },
   "dependencies": {

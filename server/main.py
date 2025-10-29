@@ -9,7 +9,7 @@ from contentloader import list_projects, get_project, load_homepage
 
 app = FastAPI(title="Portfolio API")
 
-origins = os.getenv("CORS_ORIGINS", "http://localhost:8080,http://127.0.0.1:8080").split(",")
+origins = os.getenv("CORS_ORIGINS", "http://localhost,http://127.0.0.1").split(",")
 
 app.add_middleware(
     CORSMiddleware, 
