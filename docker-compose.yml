@@ -12,6 +12,7 @@ services:
       - UVICORN_PORT=5000
     volumes:
       - ./server:/main
+      - ./server/content/media:/app/media:ro
     networks:
       - portfolio_shared_net
 
