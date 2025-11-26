@@ -1,7 +1,6 @@
 <script lang="ts">
   import "./styles/Home.css";
   import { FaGithub, FaLinkedin } from "svelte-icons/fa";
-  import avatarUrl from "./assets/headshot_2025_Jeffrey-Hoelzel_3.jpg";
 
   // manually change if necessary
   const name = "Jeffrey Hoelzel Jr.";
@@ -11,7 +10,7 @@
     I am a Software Engineering student at Northern Arizona University graduating in May 2026, with experience spanning machine learning, data science, and full-stack development. As a HURA Researcher, I apply AI to computational biology by predicting antibody epitopes across the infectome, advancing immunological research through deep learning. I have built large-scale data mining pipelines, developed AI-powered chatbots, and designed enterprise support tools that integrate RAG workflows and ML classifiers. Across research and industry, I focus on creating practical, impactful systems at the intersection of software engineering and machine learning.
   `.trim();
   const avatar = {
-    url: avatarUrl,  
+    url: import.meta.env.BASE_URL + "headshot_2025_Jeffrey-Hoelzel_3.jpg", 
     alt: "Headshot of Jeffrey Hoelzel Jr."
   };
   const socials = [
