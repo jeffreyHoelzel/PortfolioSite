@@ -34,7 +34,7 @@
         {/if}
 
         {#if secondaryHref}
-          <a href={secondaryHref} class="btn comingSoonGhost">
+          <a href={secondaryHref} class="btn">
             {secondaryLabel}
           </a>
         {/if}
@@ -71,15 +71,6 @@
     margin-top: 10px;
     max-width: 52ch;
     color: #c3cad5;
-  }
-
-  .comingSoonGhost {
-    background: transparent;
-    border-color: color-mix(in oklab, var(--ink) 8%, transparent);
-  }
-  .comingSoonGhost:hover {
-    border-color: var(--accent);
-    background: linear-gradient(180deg, #151822, #0f1118);
   }
 
   @media (max-width: 640px) {

@@ -16,6 +16,7 @@
     "svelte": "^5.43.8",
     "svelte-check": "^4.3.4",
     "svelte-icons": "^2.1.0",
+    "svelte-spa-router": "^4.0.1",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
   },

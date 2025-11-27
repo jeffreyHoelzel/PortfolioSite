@@ -1,23 +1,26 @@
 <script lang="ts">
-  import "./styles/Home.css";
   import Router from "svelte-spa-router";
+
   import Header from "./components/Header.svelte";
   import Footer from "./components/Footer.svelte";
+
   import Home from "./pages/Home.svelte";
   import Projects from "./pages/Projects.svelte";
   import Contact from "./pages/Contact.svelte";
   import Resume from "./pages/Resume.svelte";
+  import ComingSoon from "./pages/ComingSoon.svelte";
 
   const routes = {
     "/": Home, 
     "/projects": Projects, 
     "/contact": Contact, 
-    "/resume": Resume
+    "/resume": Resume, 
+    "*": ComingSoon
   };
-</script>
+</script> 
 
+<Header />
 <main>
-  <Header />
   <Router {routes} />
-  <Footer />
 </main>
+<Footer />
