@@ -1,0 +1,52 @@
+/* overall layout */
+.resumeLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(var(--s3), 5vw, var(--s5));
+  align-items: flex-start;
+}
+
+/* left side text */
+.resumeHeader {
+  display: grid;
+  gap: 10px;
+}
+
+.resumeSubtitle {
+  margin: 0;
+  color: #c3cad5;
+  max-width: 48ch;
+}
+
+/* right side preview card */
+.resumePreviewCard {
+  background: linear-gradient(180deg, #151822, #0f1118);
+  border-radius: var(--r);
+  border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+  padding: clamp(var(--s3), 3vw, var(--s4));
+  display: grid;
+  gap: 10px;
+  padding: clamp(var(--s3), 4vw, var(--s5));
+}
+
+/* PDF frame */
+.resumeFrame {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0c0e14;
+  border: 1px solid color-mix(in oklab, var(--ink) 10%, transparent);
+  aspect-ratio: 8.5 / 11;
+}
+
+.resumeFrame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .resumeLayout {
+    grid-template-columns: 1fr;
+  }
+}
