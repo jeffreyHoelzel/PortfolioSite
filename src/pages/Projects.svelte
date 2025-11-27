@@ -93,7 +93,7 @@
                   />
                 {:else}
                   <div class="projectThumb placeholder" aria-hidden="true">
-                    No image available
+                    Images coming soon!
                   </div>
                 {/if}
 
