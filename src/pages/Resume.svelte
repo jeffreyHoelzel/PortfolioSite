@@ -4,7 +4,8 @@
 
   const resumeUrl = import.meta.env.BASE_URL + "Jeffrey_Hoelzel_Jr_resume.pdf";
   const title = "Resume";
-  const subtitle = "View or download my current resume. Last updated November 2025.";
+  const subtitle1 = "View or download my current resume.";
+  const subtitle2 = "Last updated November 2025."
 </script>
 
 <main>
@@ -12,7 +13,7 @@
     <div class="wrap resumeLayout">
       <div class="resumeHeader">
         <h1 class="pageTitle">{title}</h1>
-        <p class="resumeSubtitle"><i>{subtitle}</i></p>
+        <p class="resumeSubtitle">{subtitle1} <i>{subtitle2}</i></p>
 
         <div class="ctaRow">
           <a
