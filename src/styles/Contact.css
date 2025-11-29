@@ -1,0 +1,55 @@
+.contactSection {
+  background: linear-gradient(180deg, #0f1118, #0b0c10);
+  border-top: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+}
+
+.contactCard {
+  background: linear-gradient(180deg, #151822, #0e1017);
+  border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+  border-radius: var(--r);
+  padding: clamp(var(--s4), 5vw, var(--s5));
+  text-align: left;
+  display: grid;
+  gap: var(--s4);
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.contactTitle {
+  font-size: clamp(28px, 3.4vw, 36px);
+  margin: 0;
+}
+
+.contactSubtitle {
+  margin: 0;
+  color: #c3cad5;
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+.contactMethods {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: var(--s3);
+}
+
+.contactIcon {
+  width: 64px;
+  height: 64px;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.contactLinkText {
+  font-size: 16px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--ink);
+}
+
+.contactLinkText:hover, 
+.contactIcon:hover {
+  transform: translateY(-1px);
+}

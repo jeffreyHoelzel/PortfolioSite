@@ -1,6 +1,6 @@
 <script lang="ts">
   import "../styles/Home.css";
-  import { FaGithub, FaLinkedin } from "svelte-icons/fa";
+  import { FaGithub, FaLinkedin, FaEnvelope } from "svelte-icons/fa";
 
   // manually change if necessary
   const name = "Jeffrey Hoelzel Jr.";
@@ -23,6 +23,11 @@
       icon: "linkedin", 
       label: "LinkedIn", 
       url: "https://www.linkedin.com/in/jeffrey-hoelzel-jr/"
+    }, 
+    {
+      icon: "email", 
+      label: "Email", 
+      url: "mailto:jeffreyhoelzeljr@gmail.com"
     }
   ];
 
@@ -30,24 +35,10 @@
     const key = (raw || "").toLowerCase();
     if (key === "github") return FaGithub;
     if (key === "linkedin") return FaLinkedin;
+    if (key === "email") return FaEnvelope;
 
     return null;
   };
-
-  const actions = [
-    {
-      label: "View projects", 
-      url: "#/projects"
-    }, 
-    {
-      label: "Contact me", 
-      url: "#/contact"
-    }, 
-    {
-      label: "View resume", 
-      url: "#/resume"
-    }
-  ];
 </script>
 
 <main>
